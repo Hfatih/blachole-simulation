@@ -1,70 +1,72 @@
 <div align="center">
 
-# ◉ Kara Delik Simülasyonu
+# ◉ Black Hole Simulation
 
-**Tarayıcında, gerçek zamanlı genel görelilik ışın izleme.**
+[English](README.md) · [Türkçe](README.tr.md)
 
-Dönen bir kara deliğin çevresinde ışığın nasıl büküldüğünü keşfet: kamerayı hareket ettir, fiziksel parametreleri değiştir ve olay ufkuna doğru düş.
+**Real-time general relativistic ray tracing in your browser.**
 
-`WebGL 2` · `Vanilla JavaScript` · `GLSL` · `Bağımlılık yok`
+Explore how light bends around a rotating black hole: move the camera, adjust physical parameters, and fall toward the event horizon.
+
+`WebGL 2` · `Vanilla JavaScript` · `GLSL` · `No dependencies`
 
 </div>
 
 ---
 
-## Neler var?
+## Features
 
-| Görselleştirme | Etkileşim |
+| Visualization | Interaction |
 | :--- | :--- |
-| Eğri uzay-zamanda piksel başına jeodezik ışın izleme | Sinematik, serbest kamera, otomatik tur ve serbest düşüş modları |
-| Kütleçekimsel merceklenme, kara delik gölgesi ve foton halkası | Dönme, eğim, uzaklık, görüş açısı ve disk ayarları |
-| Novikov–Thorne ince diski, Doppler etkisi ve kütleçekimsel kırmızıya kayma | Sekiz hazır sahne, kalite seçenekleri ve ekran görüntüsü alma |
-| Kodla üretilen yıldızlar, Samanyolu ve isteğe bağlı göreli jet | Işık yolları diyagramı ve EHT görünümü benzetimi |
+| Per-pixel geodesic ray tracing through curved spacetime | Cinematic, free camera, auto orbit, and free fall modes |
+| Gravitational lensing, black hole shadow, and photon ring | Spin, inclination, distance, field of view, and disk controls |
+| Novikov–Thorne thin disk, Doppler effect, and gravitational redshift | Eight presets, quality settings, and screenshots |
+| Procedural stars, Milky Way, and optional relativistic jet | Light path diagram and simulated EHT view |
 
-## Çalıştırma
+## Run locally
 
-Güncel bir **WebGL 2 destekli tarayıcı** kullan. Proje için kurulum veya paket yöneticisi gerekmiyor.
+Use a modern browser with **WebGL 2** support. No installation or package manager is required.
 
 ```bash
 python -m http.server 8000
 ```
 
-Ardından [http://localhost:8000](http://localhost:8000) adresini aç. `index.html` dosyasını doğrudan tarayıcıda açmak da mümkündür.
+Then open [http://localhost:8000](http://localhost:8000). You can also open `index.html` directly in your browser.
 
-> GPU gücüne göre görüntü kalitesi ve kare hızı değişir. Sağdaki panelden ışın izleme kalitesini düşürebilirsin.
+> Visual quality and frame rate depend on your GPU. Lower the ray tracing quality in the right-hand panel if needed.
 
-## Kontroller
+## Controls
 
-| İşlem | Kontrol |
+| Action | Control |
 | :--- | :--- |
-| Kamerayı döndür / etrafa bak | Sürükle / `Shift` + sürükle |
-| Yaklaş veya uzaklaş | Fare tekerleği |
-| Sinematik / serbest / düşüş | `C` / `O` / `D` |
-| Hazır sahne seç | `1`–`8` |
-| Otomatik tur / zamanı durdur | `T` / `Boşluk` |
-| Arayüz / ayarlar / bilgi | `H` / `P` / `I` |
-| Tam ekran / ekran görüntüsü | `F` / `S` |
+| Rotate / look around | Drag / `Shift` + drag |
+| Zoom in or out | Mouse wheel |
+| Cinematic / free / fall mode | `C` / `O` / `D` |
+| Select a preset | `1`–`8` |
+| Toggle auto orbit / pause time | `T` / `Space` |
+| Toggle UI / settings / information | `H` / `P` / `I` |
+| Full screen / screenshot | `F` / `S` |
 
-## Nasıl çalışır?
+## How it works
 
-Işık ışınları Hamilton denklemleriyle izlenir. CPU tarafındaki fizik çekirdeği `js/physics.js` içindedir; GLSL ışın izleyici ve görüntü işleme aşamaları `js/shaders.js` içindedir. `js/main.js` kamera, WebGL hattı ve arayüzü yönetir. Diskin sıcaklığı Novikov–Thorne modeline dayanır; yıldızlar ve disk dokusu dış görsel dosyalara ihtiyaç duymadan üretilir.
+Light rays are traced using Hamilton's equations. The CPU physics core is in `js/physics.js`; the GLSL ray tracer and rendering passes are in `js/shaders.js`. `js/main.js` handles the camera, WebGL pipeline, and interface. Disk temperature follows the Novikov–Thorne model, while stars and disk textures are generated in code without external image files.
 
-EHT görünümü, çözünürlüğü taklit eden **görsel bir benzetimdir**; gerçek teleskop verisi değildir.
+The EHT view is a **visual approximation** of telescope resolution; it does not use real telescope data.
 
-## Doğrulama
+## Validation
 
-Fizik çekirdeği analitik gölge, kritik yörünge, ISCO ve serbest düşüş sonuçlarına karşı sınanır:
+The physics core is checked against analytical results for the shadow, critical orbits, ISCO, and free fall:
 
 ```bash
 node dev/test_physics.js
 ```
 
-## Proje yapısı
+## Project structure
 
 ```text
-index.html           Arayüz ve giriş noktası
-js/physics.js        Kara delik fiziği ve jeodezik hesapları
-js/shaders.js        GLSL ışın izleme ve görüntüleme
-js/main.js           Kamera, WebGL hattı ve etkileşim
-dev/                 Fizik testleri ve geliştirme araçları
+index.html           Interface and entry point
+js/physics.js        Black hole physics and geodesic calculations
+js/shaders.js        GLSL ray tracing and rendering
+js/main.js           Camera, WebGL pipeline, and interaction
+dev/                 Physics tests and development tools
 ```
