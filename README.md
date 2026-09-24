@@ -1,6 +1,6 @@
 <div align="center">
 
-# ◉ Kerr Kara Deliği
+# ◉ Kara Delik Simülasyonu
 
 **Tarayıcında, gerçek zamanlı genel görelilik ışın izleme.**
 
@@ -10,15 +10,13 @@ Dönen bir kara deliğin çevresinde ışığın nasıl büküldüğünü keşfe
 
 </div>
 
-![Kerr kara deliği simülasyonunun ekran görüntüsü](assets/preview.png)
-
 ---
 
 ## Neler var?
 
 | Görselleştirme | Etkileşim |
 | :--- | :--- |
-| Kerr uzay-zamanında piksel başına jeodezik ışın izleme | Sinematik, serbest kamera, otomatik tur ve serbest düşüş modları |
+| Eğri uzay-zamanda piksel başına jeodezik ışın izleme | Sinematik, serbest kamera, otomatik tur ve serbest düşüş modları |
 | Kütleçekimsel merceklenme, kara delik gölgesi ve foton halkası | Dönme, eğim, uzaklık, görüş açısı ve disk ayarları |
 | Novikov–Thorne ince diski, Doppler etkisi ve kütleçekimsel kırmızıya kayma | Sekiz hazır sahne, kalite seçenekleri ve ekran görüntüsü alma |
 | Kodla üretilen yıldızlar, Samanyolu ve isteğe bağlı göreli jet | Işık yolları diyagramı ve EHT görünümü benzetimi |
@@ -49,7 +47,7 @@ Ardından [http://localhost:8000](http://localhost:8000) adresini aç. `index.ht
 
 ## Nasıl çalışır?
 
-Işık ışınları Kerr–Schild koordinatlarında Hamilton denklemleriyle izlenir. CPU tarafındaki fizik çekirdeği `js/physics.js` içindedir; GLSL ışın izleyici ve görüntü işleme aşamaları `js/shaders.js` içindedir. `js/main.js` kamera, WebGL hattı ve arayüzü yönetir. Diskin sıcaklığı Novikov–Thorne modeline dayanır; yıldızlar ve disk dokusu dış görsel dosyalara ihtiyaç duymadan üretilir.
+Işık ışınları Hamilton denklemleriyle izlenir. CPU tarafındaki fizik çekirdeği `js/physics.js` içindedir; GLSL ışın izleyici ve görüntü işleme aşamaları `js/shaders.js` içindedir. `js/main.js` kamera, WebGL hattı ve arayüzü yönetir. Diskin sıcaklığı Novikov–Thorne modeline dayanır; yıldızlar ve disk dokusu dış görsel dosyalara ihtiyaç duymadan üretilir.
 
 EHT görünümü, çözünürlüğü taklit eden **görsel bir benzetimdir**; gerçek teleskop verisi değildir.
 
@@ -65,7 +63,7 @@ node dev/test_physics.js
 
 ```text
 index.html           Arayüz ve giriş noktası
-js/physics.js        Kerr fiziği ve jeodezik hesapları
+js/physics.js        Kara delik fiziği ve jeodezik hesapları
 js/shaders.js        GLSL ışın izleme ve görüntüleme
 js/main.js           Kamera, WebGL hattı ve etkileşim
 dev/                 Fizik testleri ve geliştirme araçları
